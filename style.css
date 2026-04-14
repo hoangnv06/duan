@@ -1,0 +1,559 @@
+/* --- 0. RESET & PHÔNG CHỮ --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* --- 1. HEADER (Thanh điều hướng dính) --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo h2 {
+  color: #2c3e50;
+  font-size: 24px;
+}
+.logo span {
+  color: #e74c3c;
+}
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+  align-items: center;
+}
+.menu a {
+  font-weight: 600;
+  color: #555;
+  transition: color 0.3s;
+}
+.menu a:hover,
+.menu a.active {
+  color: #e74c3c;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.tk {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.tk input {
+  border: none;
+  padding: 8px 15px;
+  outline: none;
+}
+.tk button {
+  border: none;
+  background: #e74c3c;
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+.login {
+  font-weight: bold;
+  color: #2c3e50;
+}
+.banner {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/img/ho.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+.banner-noidung h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+.banner-noidung p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nutkhampha {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition:
+    background-color 0.3s,
+    transform 1s;
+}
+.nutkhampha:hover {
+  background-color: #c0392b;
+  transform: translateY(-3px); /* Hiệu ứng nảy lên nhẹ khi hover */
+}
+/* --- 3. BÀI VIẾT NỔI BẬT (Lưới 3 cột) --- */
+.diemnoibat {
+  padding: 80px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.tieude {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.tieude h2 {
+  font-size: 40px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+.khung {
+  display: grid;
+  /* Chia 3 cột bằng nhau, và tự động co thành 1 cột nếu màn hình nhỏ */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.baiviet {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+/* Hiệu ứng nổi lên khi di chuột vào thẻ bài viết */
+.baiviet:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+.anh {
+  width: 100%;
+  height: 220px;
+  overflow: hidden; /* Giữ ảnh không tràn ra khỏi bo góc */
+}
+.anh img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.baiviet:hover .anh img {
+  transform: scale(1.1);
+}
+.nd {
+  padding: 25px;
+}
+.nd h3 {
+  font-size: 25px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+.nd p {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 20px;
+  height: 70px;
+}
+.chitiet {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+.chitiet:hover {
+  text-decoration: underline;
+}
+/* --- 4. FOOTER --- */
+.footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 50px;
+}
+.footer a {
+  color: #3498db;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+/* ======================================================
+   CSS DÀNH RIÊNG CHO TRANG CHI TIẾT (detail.html)
+   ====================================================== */
+
+.trang-chitiet {
+  max-width: 900px; /* Thu hẹp lại một chút để dễ đọc văn bản hơn */
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+/* Breadcrumb (Thanh điều hướng) */
+.dieuhuong {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+.dieuhuong a {
+  color: #555;
+  font-weight: 500;
+}
+.dieuhuong a:hover {
+  color: #e74c3c;
+}
+/* Tiêu đề & Ảnh bìa */
+.phan-dau-chitiet h1 {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+.anh-bia {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.anh-bia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Nội dung bài viết */
+.noidung-baiviet p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+.noidung-baiviet h3 {
+  margin: 35px 0 15px 0;
+  color: #e74c3c;
+  border-left: 5px solid #e74c3c;
+  padding-left: 12px;
+  font-size: 1.4rem;
+}
+/* Bảng thông tin (Bắt buộc phải đẹp để lấy điểm UI) */
+.bangthongtin {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden; /* Giữ bo góc cho table */
+}
+.bangthongtin th,
+.bangthongtin td {
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  text-align: left;
+}
+.bangthongtin th {
+  background-color: #f8f9fa;
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.bangthongtin tr:hover {
+  background-color: #fcfcfc;
+}
+/* Bản đồ */
+.ban-do {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  border: 1px solid #eee;
+}
+/* Khu vực Bình luận */
+.khu-vuc-binh-luan {
+  border-top: 2px solid #f1f2f6;
+  padding-top: 30px;
+  margin-top: 40px;
+}
+.khu-vuc-binh-luan h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+.form-binh-luan textarea {
+  width: 100%;
+  height: 120px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical; /* Cho phép kéo giãn chiều dọc */
+  font-family: inherit;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  outline: none;
+}
+.form-binh-luan textarea:focus {
+  border-color: #e74c3c;
+}
+.guidanhgia {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+.guidanhgia:hover {
+  background: #e74c3c;
+}
+/* Danh sách Comment */
+.danh-sach-binh-luan {
+  margin-top: 40px;
+}
+.item-binh-luan {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px dashed #e0e0e0;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  flex-shrink: 0; /* Không cho avatar bị bóp méo */
+}
+.noidung-bl h4 {
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+.noidung-bl p {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.sao {
+  color: #f39c12;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+.thoigian {
+  font-size: 0.85rem;
+  color: #95a5a6;
+}
+/* =========================================
+   GIAO DIỆN LƯỚI ẢNH (HOVER OVERLAY) CHO ẨM THỰC
+   ========================================= */
+.khu-vuc-am-thuc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 5%;
+}
+.khung-luoi-am-thuc {
+  display: grid;
+  /* Chia 3 cột tự động co giãn */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+/* KHỐI THẺ MÓN ĂN CHÍNH */
+.the-mon-an {
+  position: relative; /* Đặt làm mốc tọa độ cho lớp phủ */
+  border-radius: 15px;
+  overflow: hidden; /* Giấu đi những phần bị tràn ra ngoài */
+  height: 380px; /* Cố định chiều cao cho tất cả ảnh bằng nhau */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+/* ẢNH ĐỒ ĂN BÊN DƯỚI */
+.anh-mon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease; /* Hiệu ứng zoom ảnh */
+}
+/* LỚP MÀN PHỦ MÀU ĐEN (NẰM ĐÈ LÊN ẢNH) */
+.lop-phu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75); /* Màu đen trong suốt 75% */
+  /* Căn giữa chữ bên trong */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  /* Ẩn lớp phủ đi khi chưa hover */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+/* Khi hover vào thẻ -> Hiện lớp màn phủ lên */
+.the-mon-an:hover .lop-phu {
+  opacity: 1;
+}
+/* HIỆU ỨNG TRƯỢT CHỮ TRONG LỚP PHỦ */
+.ten-mon {
+  color: #f1c40f; /* Màu vàng cam nhạt */
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  transform: translateY(-20px); /* Kéo chữ lên trên một chút */
+  transition: transform 0.4s ease;
+}
+.mo-ta-mon {
+  color: #ecf0f1;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  transform: translateY(20px); /* Đẩy chữ xuống dưới một chút */
+  transition: transform 0.4s ease;
+}
+.chi-tiet-mon {
+  display: inline-block;
+  padding: 10px 25px;
+  border: 2px solid #e74c3c;
+  color: white;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: background 0.3s;
+  transform: translateY(20px); /* Đẩy nút xuống dưới một chút */
+  transition:
+    transform 0.4s ease,
+    background 0.3s;
+}
+/* Khi hover vào thẻ -> Toàn bộ chữ và nút sẽ trượt về vị trí ban đầu (tạo hiệu ứng 2 chiều hút vào nhau) */
+.the-mon-an:hover .ten-mon,
+.the-mon-an:hover .mo-ta-mon,
+.the-mon-an:hover .chi-tiet-mon {
+  transform: translateY(0);
+}
+/* =========================================
+   GIAO DIỆN TRANG LIÊN HỆ
+   ========================================= */
+/* Ảnh nền riêng cho Banner trang Liên hệ */
+.banner-lienhe {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1920&q=80")
+      center/cover;
+}
+/* Bố cục chính 2 cột */
+.khu-vuc-lien-he {
+  display: flex;
+  flex-wrap: wrap; /* Cho phép rớt dòng trên màn hình nhỏ */
+  gap: 50px;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 5%;
+}
+/* Chia đều 50-50 cho 2 cột */
+.thong-tin-lh,
+.form-lh {
+  flex: 1;
+  min-width: 300px; /* Đảm bảo không bị bóp quá nhỏ trên điện thoại */
+}
+/* --- TRANG TRÍ CỘT TRÁI (THÔNG TIN) --- */
+.thong-tin-lh h3,
+.form-lh h3 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #e74c3c;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+.thong-tin-lh p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+.danh-sach-lh {
+  list-style: none;
+  margin-bottom: 30px;
+}
+.danh-sach-lh li {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  color: #444;
+}
+/* --- TRANG TRÍ CỘT PHẢI (FORM ĐIỀN) --- */
+.form-lh {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.nhom-nhap-lieu {
+  margin-bottom: 20px;
+}
+.nhom-nhap-lieu label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+/* Trang trí ô nhập chữ */
+.nhom-nhap-lieu input,
+.nhom-nhap-lieu textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit; /* Kế thừa font chữ chung của web */
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+  outline: none; /* Tắt viền đen mặc định của trình duyệt */
+}
+.nut-gui-tin {
+  width: 100%;
+  background: #e74c3c;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+.nut-gui-tin:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}

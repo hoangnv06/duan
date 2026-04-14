@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liên hệ | Khám phá Hà Nội</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Thêm một chút CSS để phần báo lỗi trông chuyên nghiệp hơn */
+      .error-message {
+        color: #e74c3c;
+        font-size: 14px;
+        margin-top: 5px;
+        display: block;
+      }
+      input.input-error {
+        border: 2px solid #e74c3c !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2>Hanoi<span>Travel</span></h2>
+      </div>
+
+      <nav class="menu">
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="index.html#featured">Địa điểm</a></li>
+          <li><a href="amthuc.html">Ẩm thực</a></li>
+          <li><a href="lienhe.html" class="active">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="tk">
+          <input type="text" placeholder="Tìm kiếm..." />
+          <button type="button">🔍</button>
+        </div>
+        <div class="auth-buttons">
+          <a href="#" class="login">Đăng nhập</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="banner banner-lienhe">
+      <div class="banner-noidung">
+        <h1>Kết Nối Với Chúng Tôi</h1>
+        <p>
+          Chúng tôi luôn sẵn lòng lắng nghe và hỗ trợ bạn trong mọi hành trình
+          khám phá Thủ đô.
+        </p>
+      </div>
+    </section>
+
+    <main class="khu-vuc-lien-he">
+      <div class="thong-tin-lh">
+        <h3>Thông tin liên hệ</h3>
+        <ul class="danh-sach-lh">
+          <li>
+            📍 <strong>Địa chỉ:</strong> Số 1 Tràng Tiền, Hoàn Kiếm, Hà Nội
+          </li>
+          <li>📞 <strong>Điện thoại:</strong> 0123 456 789</li>
+          <li>✉️ <strong>Email:</strong> hotro@hanoitravel.vn</li>
+          <li>
+            ⏰ <strong>Giờ làm việc:</strong> 08:00 - 17:00 (Thứ 2 - Thứ 7)
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-lh">
+        <h3>Gửi tin nhắn cho chúng tôi</h3>
+
+        <form id="contactForm">
+          <div class="nhom-nhap-lieu">
+            <label for="hoten">Họ và tên *</label>
+            <input
+              type="text"
+              id="hoten"
+              placeholder="Nhập tên của bạn"
+              required
+            />
+            <span id="error-name" class="error-message"></span>
+          </div>
+
+          <div class="nhom-nhap-lieu">
+            <label for="email">Địa chỉ Email *</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="example@gmail.com"
+              required
+            />
+          </div>
+
+          <div class="nhom-nhap-lieu">
+            <label for="tieude">Chủ đề</label>
+            <input
+              type="text"
+              id="tieude"
+              placeholder="Bạn cần hỗ trợ về việc gì?"
+            />
+          </div>
+
+          <div class="nhom-nhap-lieu">
+            <label for="noidung">Nội dung tin nhắn *</label>
+            <textarea
+              id="noidung"
+              rows="5"
+              placeholder="Viết nội dung chi tiết ở đây..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="nut-gui-tin">Gửi Tin Nhắn</button>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2026 Khám phá Hà Nội</p>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          const hoTenInput = document.getElementById("hoten");
+          const errorSpan = document.getElementById("error-name");
+
+          const valueWithoutSpaces = hoTenInput.value.replace(/\s+/g, "");
+
+          // 3. Kiểm tra điều kiện: Nếu độ dài sau khi bỏ khoảng trắng <= 5
+          if (valueWithoutSpaces.length <= 5) {
+            // Hiện thông báo lỗi xuống dưới ô nhập
+            errorSpan.innerText = "Họ tên phải có ít nhất 6 ký tự ";
+
+            // Thêm viền đỏ cho ô nhập để dễ nhận biết
+            hoTenInput.classList.add("input-error");
+
+            // Ngăn form gửi đi (quan trọng nhất)
+            event.preventDefault();
+          } else {
+            // Nếu hợp lệ: Xóa thông báo lỗi và gửi form
+            errorSpan.innerText = "";
+            hoTenInput.classList.remove("input-error");
+            alert("Cảm ơn bạn! Tin nhắn của bạn đã được gửi thành công.");
+
+            // Tùy chọn: Tải lại trang sau khi gửi thành công
+            // window.location.reload();
+          }
+        });
+
+      // Thêm sự kiện khi người dùng gõ lại thì xóa viền đỏ lỗi ngay lập tức
+      document.getElementById("hoten").addEventListener("input", function () {
+        if (this.value.replace(/\s+/g, "").length > 5) {
+          document.getElementById("error-name").innerText = "";
+          this.classList.remove("input-error");
+        }
+      });
+    </script>
+  </body>
+</html>
